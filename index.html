@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dhruvatej Mandadi · ISM Portfolio</title>
+<meta name="description" content="Dhruvatej Mandadi's Independent Study & Mentorship portfolio: how engineers turn an idea into an innovation, documented by a beginner building robots.">
+<meta property="og:title" content="Dhruvatej Mandadi · ISM Portfolio">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,200..700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0b1622; --navy-2:#0f1d2c; --navy-3:#14273a;
+  --ink:#e9eff4; --muted:#93a4b5; --dim:#5d7084;
+  --line:rgba(214,232,246,.14); --line-2:rgba(214,232,246,.26);
+  --paper:#eef1f3; --paper-ink:#0f1a26; --paper-muted:#56636f; --paper-line:#d3dade;
+  --signal:#8fd0ff;
+  --ease:cubic-bezier(.2,.7,.1,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--navy);color:var(--ink);font-family:Archivo,system-ui,sans-serif;font-stretch:100%;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase}
+.wide{font-stretch:125%}
+.wrap{max-width:1240px;margin:0 auto;padding:0 40px}
+::selection{background:var(--signal);color:var(--navy)}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .4s,border-color .4s,backdrop-filter .4s;border-bottom:1px solid transparent}
+.nav.solid{background:rgba(11,22,34,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;max-width:none;padding:0 32px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;font-size:16px;font-weight:500;letter-spacing:.01em}
+.logo svg{width:28px;height:28px}
+.links{display:flex;gap:30px}
+.links a{position:relative;text-decoration:none;font-size:14.5px;color:#cdd8e2;padding:6px 0;transition:color .3s}
+.links a:after{content:"";position:absolute;left:0;right:0;bottom:2px;height:1px;background:currentColor;transform:scaleX(.999);transform-origin:left;opacity:.55;transition:transform .45s var(--ease),opacity .3s}
+.links a:hover,.links a.on{color:#fff}
+.links a.on:after{opacity:1;background:var(--signal)}
+.burger{display:none;background:none;border:1px solid var(--line-2);color:var(--ink);padding:8px 12px;cursor:pointer}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;isolation:isolate}
+.grid-ov{position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:80px 80px;
+  -webkit-mask-image:radial-gradient(ellipse 90% 80% at 50% 45%,#000 10%,transparent 80%);mask-image:radial-gradient(ellipse 90% 80% at 50% 45%,#000 10%,transparent 80%);opacity:.55}
+.hero:after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse 60% 50% at 75% 30%,rgba(143,208,255,.07),transparent 70%),linear-gradient(0deg,var(--navy),rgba(11,22,34,0) 25%)}
+.scan{position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(143,208,255,.5),transparent);animation:scan 9s linear infinite;z-index:-1;opacity:.6}
+@keyframes scan{0%{top:12%}100%{top:88%}}
+.marks span{position:absolute;width:18px;height:18px;z-index:-1}
+.marks span:before,.marks span:after{content:"";position:absolute;background:var(--line-2)}
+.marks span:before{left:8px;top:0;width:1px;height:18px}.marks span:after{top:8px;left:0;height:1px;width:18px}
+.hero .wrap{width:100%}
+.hero-copy{max-width:900px;padding:140px 0 120px}
+.hero h1{font-size:clamp(36px,5.4vw,76px);line-height:1.08;font-weight:300;font-stretch:112%;letter-spacing:-.01em;margin:0}
+.hero h1 cite{font-style:normal;font-size:15px;font-weight:400;font-stretch:100%;color:var(--muted);letter-spacing:0;white-space:nowrap}
+.hero p{color:#c4d0db;max-width:430px;margin:28px 0 34px;font-size:16.5px}
+.btn{display:inline-flex;align-items:center;gap:12px;border:1px solid var(--line-2);color:#fff;text-decoration:none;padding:13px 26px;font-size:14.5px;position:relative;overflow:hidden;transition:border-color .4s,color .4s;background:none;cursor:pointer;font-family:inherit}
+.btn:before{content:"";position:absolute;inset:0;background:var(--ink);transform:translateY(101%);transition:transform .5s var(--ease);z-index:-1}
+.btn{isolation:isolate}
+.btn:hover{color:var(--navy);border-color:var(--ink)}
+.btn:hover:before{transform:none}
+.btn svg{width:14px;height:14px;transition:transform .4s var(--ease)}
+.btn:hover svg{transform:translateX(4px)}
+.hud{position:absolute;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:var(--dim);text-transform:uppercase}
+.hud.bl{left:32px;bottom:28px}.hud.br{right:32px;bottom:28px;text-align:right}
+.ticks{position:absolute;left:32px;right:32px;bottom:58px;height:8px;background:repeating-linear-gradient(90deg,var(--line-2) 0 1px,transparent 1px 40px);opacity:.6;-webkit-mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent);mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent)}
+.scrollcue{position:absolute;left:50%;bottom:24px;width:1px;height:46px;background:var(--line);overflow:hidden}
+.scrollcue:after{content:"";position:absolute;left:0;top:-46px;width:1px;height:46px;background:var(--signal);animation:cue 2.2s var(--ease) infinite}
+@keyframes cue{to{top:46px}}
+
+/* ---------- sections ---------- */
+section{position:relative;padding:130px 0}
+.sec-head{display:flex;align-items:baseline;gap:22px;margin-bottom:56px}
+.sec-head h2{font-size:clamp(34px,4.4vw,56px);font-weight:300;font-stretch:112%;margin:0;letter-spacing:-.01em;line-height:1}
+.sec-head .mono{color:var(--dim)}
+.rule{height:1px;background:var(--line-2);transform-origin:left;margin-top:-34px;margin-bottom:56px}
+.paper{background:var(--paper);color:var(--paper-ink)}
+.paper .rule{background:var(--paper-line)}
+.paper .sec-head .mono{color:var(--paper-muted)}
+.lead{font-size:clamp(19px,2vw,23px);line-height:1.5;font-weight:300;font-stretch:105%}
+
+/* reveal */
+.js .rv{opacity:0;transform:translateY(28px);transition:opacity 1s var(--ease),transform 1.1s var(--ease)}
+.js .rv.l{transform:translateX(-48px)}
+.js .rv.in{opacity:1;transform:none}
+.js .rule.rv{transform:scaleX(0);opacity:1}
+.js .rule.rv.in{transform:scaleX(1);transition:transform 1.4s var(--ease)}
+.js .wipe{clip-path:inset(0 100% 0 0);transition:clip-path 1.4s var(--ease)}
+.js .wipe.in{clip-path:inset(0 0 0 0)}
+.d1{transition-delay:.08s!important}.d2{transition-delay:.16s!important}.d3{transition-delay:.24s!important}.d4{transition-delay:.32s!important}.d5{transition-delay:.4s!important}
+
+/* ---------- blog cards ---------- */
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.post-card{display:flex;flex-direction:column;border:1px solid var(--line-2);background:transparent;color:inherit;text-align:left;padding:0;cursor:pointer;font-family:inherit;min-height:380px;transition:border-color .4s,background .4s,transform .6s var(--ease)}
+.post-card .t{flex:1;padding:28px 24px;font-size:20px;line-height:1.3;font-weight:400;font-stretch:118%;text-transform:uppercase;letter-spacing:.02em}
+.post-card .t small{display:block;color:var(--dim);margin-bottom:18px}
+.post-card .date{background:var(--paper);color:var(--paper-ink);padding:14px 24px;font-size:14px;font-weight:600;display:flex;justify-content:space-between;align-items:center}
+.post-card .date svg{width:14px;height:14px;transition:transform .4s var(--ease)}
+.post-card:hover{border-color:var(--ink);background:var(--navy-2)}
+.post-card:hover .date svg{transform:translateX(4px)}
+.more{display:inline-block;margin-top:40px;font-size:22px;font-weight:300;font-stretch:112%;text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px;background:none;border:0;color:inherit;cursor:pointer;font-family:inherit;padding:0}
+
+/* ---------- about ---------- */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.frame{position:relative;background:#fff;border:1px solid var(--paper-line)}
+.frame img{width:100%}
+.frame .cap{position:absolute;left:16px;bottom:14px;color:var(--paper-muted)}
+.frame .corner{position:absolute;width:14px;height:14px;border-color:var(--paper-ink);border-style:solid;opacity:.5}
+.c1{top:-1px;left:-1px;border-width:1px 0 0 1px}.c2{top:-1px;right:-1px;border-width:1px 1px 0 0}.c3{bottom:-1px;left:-1px;border-width:0 0 1px 1px}.c4{bottom:-1px;right:-1px;border-width:0 1px 1px 0}
+.paper p{color:#2c3946}
+.quote{border-left:1px solid var(--paper-ink);padding:4px 0 4px 22px;margin:34px 0;font-size:20px;line-height:1.45;font-weight:300;font-stretch:108%}
+.quote cite{display:block;font-style:normal;font-size:14px;color:var(--paper-muted);margin-top:10px;font-stretch:100%}
+.spec{border-top:1px solid var(--paper-line);margin-top:30px}
+.spec div{display:grid;grid-template-columns:140px 1fr;gap:20px;padding:14px 0;border-bottom:1px solid var(--paper-line);font-size:15.5px}
+.spec dt,.spec .k{color:var(--paper-muted)}
+
+/* ---------- ISM ---------- */
+.facts{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2)}
+.fact{padding:30px 26px;border-left:1px solid var(--line)}
+.fact:first-child{border-left:0}
+.fact .mono{color:var(--dim)}
+.fact b{display:block;font-size:30px;font-weight:300;font-stretch:115%;margin-top:10px;line-height:1.15}
+.rq{margin-top:80px;display:grid;grid-template-columns:200px 1fr;gap:40px}
+.rq q{quotes:none;font-size:clamp(26px,3.2vw,42px);line-height:1.2;font-weight:300;font-stretch:110%}
+
+/* ---------- research ---------- */
+.flow{margin:10px 0 90px}
+.flow svg{width:100%;height:auto;overflow:visible}
+.flow .box{fill:var(--navy-2);stroke:var(--line-2)}
+.flow .lbl{fill:var(--ink);font-family:Archivo,sans-serif;font-size:17px;font-stretch:110%}
+.flow .num{fill:var(--dim);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2px}
+.flow .wire{fill:none;stroke:var(--signal);stroke-width:1.2}
+.flow .loop{fill:none;stroke:var(--signal);stroke-width:1.2;stroke-dasharray:5 6}
+.js .flow .draw{stroke-dasharray:var(--len);stroke-dashoffset:var(--len);transition:stroke-dashoffset 2s var(--ease)}
+.js .flow.in .draw{stroke-dashoffset:0}
+.flow-note{display:flex;justify-content:space-between;gap:20px;color:var(--dim);margin-top:14px}
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line-2)}
+.tl{padding:30px 28px 0 0;position:relative}
+.tl:before{content:"";position:absolute;top:-5px;left:0;width:9px;height:9px;border-radius:50%;background:var(--navy);border:1px solid var(--signal)}
+.tl.now:before{background:var(--signal);box-shadow:0 0 0 6px rgba(143,208,255,.12)}
+.tl .mono{color:var(--signal)}
+.tl h3{font-size:20px;font-weight:400;font-stretch:110%;margin:10px 0 8px;line-height:1.25}
+.tl p{margin:0;color:var(--muted);font-size:15px}
+.rows{border-top:1px solid var(--line-2);margin-top:90px}
+.row{display:grid;grid-template-columns:120px 1fr 160px 30px;gap:24px;align-items:center;width:100%;padding:26px 0;border:0;border-bottom:1px solid var(--line);background:none;color:inherit;text-align:left;cursor:pointer;font-family:inherit;transition:padding .5s var(--ease),background .4s}
+.row .n{color:var(--dim)}
+.row .ttl{font-size:21px;font-weight:300;font-stretch:110%;line-height:1.3}
+.row .dt{color:var(--muted);text-align:right}
+.row svg{width:16px;height:16px;justify-self:end;transition:transform .4s var(--ease)}
+.row:hover{padding-left:14px;background:linear-gradient(90deg,rgba(214,232,246,.04),transparent)}
+.row:hover svg{transform:translateX(4px)}
+
+/* ---------- exploded scrub ---------- */
+.scrub{height:300vh;padding:0;background:var(--navy)}
+.scrub .stick{position:sticky;top:0;height:100svh;display:grid;grid-template-columns:1.25fr 1fr;align-items:center;overflow:hidden}
+.scrub canvas{width:100%;max-height:92svh;aspect-ratio:10/9;object-fit:contain;display:block;margin-left:auto}
+.scrub .panel{padding:0 60px 0 20px;max-width:520px}
+.scrub h2{font-size:clamp(30px,3.6vw,48px);font-weight:300;font-stretch:112%;line-height:1.1;margin:14px 0 22px}
+.scrub p{color:var(--muted)}
+.bar{height:1px;background:var(--line-2);margin:34px 0 14px;position:relative}
+.bar i{position:absolute;left:0;top:0;height:1px;width:0;background:var(--signal)}
+.bom{list-style:none;padding:0;margin:26px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:6px 24px;font-size:14.5px;color:#c4d0db}
+.bom li{display:flex;gap:10px;opacity:.25;transition:opacity .5s}
+.bom li.on{opacity:1}
+.bom li span{color:var(--dim);font-family:'IBM Plex Mono',monospace;font-size:12px;padding-top:3px}
+
+/* ---------- mentor ---------- */
+.mentor{display:grid;grid-template-columns:5fr 7fr;gap:80px;align-items:start}
+.mentor .img{border:1px solid var(--line);background:var(--navy-2)}
+.mentor h3{font-size:clamp(26px,2.6vw,34px);font-weight:300;font-stretch:112%;margin:6px 0 4px;line-height:1.2}
+.mentor .role{color:var(--muted);margin:0 0 28px}
+.mentor blockquote{margin:30px 0;padding:0 0 0 22px;border-left:1px solid var(--signal);font-size:21px;line-height:1.45;font-weight:300;font-stretch:108%}
+.mentor .mini{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
+.mini > div{border-top:1px solid var(--line-2);padding-top:18px}
+.mini h4{margin:8px 0 6px;font-size:17px;font-weight:500}
+.mini p{margin:0;color:var(--muted);font-size:15px}
+
+/* ---------- projects ---------- */
+.proj{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.pcard{border:1px solid var(--paper-line);background:#fff;display:flex;flex-direction:column}
+.pcard .media{aspect-ratio:16/10;overflow:hidden;background:#fff;border-bottom:1px solid var(--paper-line);position:relative}
+.pcard .media img{width:100%;height:100%;object-fit:contain;transition:transform 1.2s var(--ease)}
+.pcard:hover .media img{transform:scale(1.035)}
+.pcard .media.dark{background:var(--navy)}
+.pcard .body{padding:28px}
+.pcard h3{font-size:26px;font-weight:400;font-stretch:112%;margin:8px 0 10px;line-height:1.2}
+.pcard p{margin:0 0 18px;font-size:15.5px}
+.pcard ol{margin:0;padding-left:22px;font-size:15px;color:#2c3946}
+.pcard ol li{padding:3px 0}
+.pcard ol li::marker{font-family:'IBM Plex Mono',monospace;color:var(--paper-muted)}
+.tag{color:var(--paper-muted)}
+.status{display:inline-flex;align-items:center;gap:8px}
+.status:before{content:"";width:6px;height:6px;border-radius:50%;background:#1f9d6b}
+.status.alt:before{background:#c98a1b}
+#fieldsvg{width:100%;height:100%}
+#fieldsvg .ln{stroke:#d6e8f6;fill:none;stroke-width:1.2}
+#fieldsvg .dim{stroke:rgba(214,232,246,.45);fill:none;stroke-width:1}
+#fieldsvg text{fill:#93a4b5;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:1.5px}
+#fieldsvg .path{stroke:var(--signal);stroke-dasharray:6 7;fill:none;stroke-width:1.4;animation:march 1.6s linear infinite}
+@keyframes march{to{stroke-dashoffset:-26}}
+
+/* ---------- footer ---------- */
+footer{padding:130px 0 40px;border-top:1px solid var(--line)}
+footer h2{font-size:clamp(40px,7vw,96px);font-weight:300;font-stretch:118%;line-height:1;margin:0 0 30px;letter-spacing:-.02em}
+footer a.mail{font-size:clamp(18px,2vw,24px);font-weight:300;text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px}
+.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:110px;color:var(--dim)}
+.foot a{color:var(--muted)}
+
+/* ---------- modal ---------- */
+.modal{position:fixed;inset:0;z-index:80;background:rgba(6,12,19,.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .4s}
+.modal.open{opacity:1;pointer-events:auto}
+.sheet{position:absolute;top:0;right:0;bottom:0;width:min(760px,100%);background:var(--paper);color:var(--paper-ink);overflow-y:auto;overscroll-behavior:contain;transform:translateX(40px);transition:transform .6s var(--ease)}
+.modal.open .sheet{transform:none}
+.sheet-in{padding:44px 56px 80px}
+.sheet .top{display:flex;justify-content:space-between;align-items:center;color:var(--paper-muted);margin-bottom:40px}
+.x{border:1px solid var(--paper-line);background:none;padding:9px 14px;cursor:pointer;color:var(--paper-ink)}
+.x:hover{border-color:var(--paper-ink)}
+.sheet h2{font-size:clamp(28px,3.4vw,40px);font-weight:300;font-stretch:112%;line-height:1.15;margin:0 0 30px}
+.sheet p,.sheet li{font-size:16.5px;line-height:1.75;color:#24313d}
+.sheet h4{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--paper-muted);font-weight:500;margin:40px 0 10px;padding-top:20px;border-top:1px solid var(--paper-line)}
+.sheet .ref{padding-left:2em;text-indent:-2em;font-size:15px}
+
+/* ---------- responsive ---------- */
+@media (max-width:1080px){
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .timeline{grid-template-columns:1fr 1fr;row-gap:40px}
+}
+@media (max-width:900px){
+  .wrap{padding:0 22px}
+  .nav .wrap{padding:0 18px}
+  .burger{display:block}
+  .links{position:fixed;top:72px;left:0;right:0;flex-direction:column;gap:0;background:rgba(11,22,34,.97);padding:10px 22px 22px;border-bottom:1px solid var(--line);transform:translateY(-8px);opacity:0;pointer-events:none;transition:opacity .3s,transform .4s var(--ease)}
+  .links.open{opacity:1;transform:none;pointer-events:auto}
+  .links a{padding:14px 0;border-bottom:1px solid var(--line);font-size:16px}
+  .links a:after{display:none}
+  .hero-copy{padding:120px 0 120px}
+  section{padding:96px 0}
+  .split,.mentor,.proj{grid-template-columns:1fr;gap:44px}
+  .facts{grid-template-columns:1fr 1fr}
+  .fact:nth-child(3){border-left:0}
+  .fact:nth-child(n+3){border-top:1px solid var(--line)}
+  .rq{grid-template-columns:1fr;gap:14px}
+  .row{grid-template-columns:1fr 24px;gap:6px 14px}
+  .row .n{grid-column:1}
+  .row .ttl{grid-column:1}
+  .row .dt{grid-column:1;text-align:left}
+  .row svg{grid-row:1 / span 3;grid-column:2}
+  .scrub{height:260vh}
+  .scrub .stick{grid-template-columns:1fr;grid-template-rows:auto auto;align-content:center;gap:0}
+  .scrub canvas{max-height:46svh;margin:0 auto;width:auto;max-width:100%}
+  .scrub .panel{padding:0 22px}
+  .scrub h2{margin:8px 0 10px}
+  .scrub .desc{display:none}
+  .bar{margin:16px 0 10px}
+  .bom{font-size:13px;margin-top:12px}
+  .sheet-in{padding:30px 22px 60px}
+  .hud.br,.ticks,.scrollcue{display:none}
+}
+@media (max-width:560px){
+  .cards{grid-template-columns:1fr}
+  .post-card{min-height:250px}
+  .timeline{grid-template-columns:1fr}
+  .mentor .mini{grid-template-columns:1fr}
+  .spec div{grid-template-columns:110px 1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+  .js .rv,.js .wipe{opacity:1;transform:none;clip-path:none}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js')</script>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="logo" href="#home" aria-label="Dhruvatej Mandadi, home">
+      <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 21 11 8l5 8 3-4 6 9"/><path d="M3 21h22" opacity=".5"/></svg>
+      Dhruvatej Mandadi
+    </a>
+    <nav class="links" id="links">
+      <a href="#home">Home</a>
+      <a href="#about">About Me</a>
+      <a href="#ism">About ISM</a>
+      <a href="#blog">Blog</a>
+      <a href="#research">Research</a>
+      <a href="#mentor">Mentor</a>
+    </nav>
+    <button class="burger mono" id="burger" aria-expanded="false" aria-controls="links">Menu</button>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero" id="home" style="padding:0">
+  <div class="grid-ov"></div>
+  <div class="scan" aria-hidden="true"></div>
+  <div class="marks" aria-hidden="true"><span style="left:8%;top:22%"></span><span style="right:9%;top:24%"></span><span style="left:12%;bottom:24%"></span><span style="right:14%;bottom:30%"></span></div>
+  <div class="wrap">
+    <div class="hero-copy">
+      <div class="mono rv" style="color:var(--signal);margin-bottom:26px">Independent Study &amp; Mentorship · 2026–27</div>
+      <h1 class="rv d1">“You could not live with your own failure. Where did that bring you? Back to me.” <cite>–Thanos</cite></h1>
+      <p class="rv d2">My name is Dhruvatej Mandadi and I am an aspiring robotics and software engineer and entrepreneur, learning how ideas become real innovations.</p>
+      <a class="btn rv d3" href="#about">About Me <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 7h12M8 2l5 5-5 5"/></svg></a>
+    </div>
+  </div>
+  <div class="ticks"></div>
+  <div class="hud bl">33.15° N · 96.82° W — Frisco, TX</div>
+  <div class="hud br">Frisco High School · ISM</div>
+  <div class="scrollcue" aria-hidden="true"></div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="wrap">
+    <div class="sec-head"><h2 class="rv">Blogs</h2><span class="mono rv d1">Field notes · 4 entries</span></div>
+    <div class="rule rv"></div>
+    <div class="cards"><button class="post-card rv l d1" data-open="blog-0"><span class="t"><small class="mono">Entry 04</small>Finding My Direction</span><span class="date">Sep 28 – Oct 19<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 7h12M8 2l5 5-5 5"/></svg></span></button><button class="post-card rv l d2" data-open="blog-1"><span class="t"><small class="mono">Entry 03</small>Lost But Surviving</span><span class="date">Sep 14 – Sep 28<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 7h12M8 2l5 5-5 5"/></svg></span></button><button class="post-card rv l d3" data-open="blog-2"><span class="t"><small class="mono">Entry 02</small>Ready For the Bigger</span><span class="date">Aug 24 – Sep 7<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 7h12M8 2l5 5-5 5"/></svg></span></button><button class="post-card rv l d4" data-open="blog-3"><span class="t"><small class="mono">Entry 01</small>Building From the Ground Up</span><span class="date">Aug 17 – Aug 23<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 7h12M8 2l5 5-5 5"/></svg></span></button></div>
+    <button class="more rv" data-open="blog-0">Read the latest entry</button>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="paper" id="about">
+  <div class="wrap">
+    <div class="sec-head"><h2 class="rv">About Me</h2><span class="mono rv d1">Profile</span></div>
+    <div class="rule rv"></div>
+    <div class="split" style="align-items:start">
+      <div>
+        <p class="lead rv" style="font-size:clamp(24px,2.8vw,34px);margin-top:0">I like to build. I don't want to only learn about ideas. I want to understand how they work and turn them into something real.</p>
+      </div>
+      <div>
+        <p class="rv d1">I enjoy watching the NFL and Marvel, staying active, and exploring technology. For ISM I'm focused on robotics and software engineering: how software and physical machines work together, especially as robotics and physical AI keep developing. In college I'm interested in Computer Science or Robotics Engineering.</p>
+        <div class="spec rv d3">
+          <div><span class="k">Building</span><span>Repend (AI science labs) · Cofinity (student org platform)</span></div>
+          <div><span class="k">Learning</span><span>PLTW Engineering · AiFA Labs mentorship · CS50 · IBM Python certificate</span></div>
+          <div><span class="k">Leading</span><span>Future Founders – Perplexed Chapter · DECA</span></div>
+          <div><span class="k">Goal</span><span>Learn by building, and turn it into a 30-minute final presentation</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ISM -->
+<section id="ism">
+  <div class="wrap">
+    <div class="sec-head"><h2 class="rv">About ISM</h2><span class="mono rv d1">Program</span></div>
+    <div class="rule rv"></div>
+    <p class="lead rv" style="max-width:820px;margin:0 0 60px">Independent Study &amp; Mentorship lets me research a field I choose, learn directly from professionals, and turn that into a final product and presentation.</p>
+    <div class="facts">
+      <div class="fact rv"><span class="mono">Field</span><b>Robotics &amp; software</b></div>
+      <div class="fact rv d1"><span class="mono">School</span><b>Frisco High School</b></div>
+      <div class="fact rv d2"><span class="mono">Showcase</span><b>Jan 21</b></div>
+      <div class="fact rv d3"><span class="mono">Final</span><b>Apr 22</b></div>
+    </div>
+    <div class="rq">
+      <span class="mono rv" style="color:var(--signal);padding-top:12px">Research question</span>
+      <q class="rv d1">How do engineers turn an idea into an innovation, and what does that process look like for a beginner?</q>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research" style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head"><h2 class="rv">Research</h2><span class="mono rv d1">Process · timeline · assessments</span></div>
+    <div class="rule rv"></div>
+    <p class="lead rv" style="max-width:780px;margin:0 0 60px">The first version of my answer, from my interview with an engineer and founder. It isn't a straight line. It loops.</p>
+    <div class="flow" id="flow">
+      <svg viewBox="0 0 1160 230" role="img" aria-label="Process diagram: start with why, pick a problem you care about, start small, experiment, fail, rethink, and loop back to try again">
+        <g id="flowg"></g>
+      </svg>
+      <div class="flow-note mono"><span>Source: J. Lee, personal communication, Oct 2026</span><span>Rev A · testing it myself</span></div>
+    </div>
+    <div class="timeline">
+      <div class="tl rv"><span class="mono">August</span><h3>Robotics industry trends</h3><p>Cost is one of the biggest barriers. Autonomous robots can cost $30,000–$150,000.</p></div>
+      <div class="tl rv d1"><span class="mono">September</span><h3>Cheaper computer vision</h3><p>How can robots see well enough without expensive hardware, and still be safe?</p></div>
+      <div class="tl rv d2"><span class="mono">October</span><h3>From one idea to many</h3><p>I explored several robot and product ideas. The problem was direction, not ideas.</p></div>
+      <div class="tl now rv d3"><span class="mono">Now</span><h3>How ideas become innovations</h3><p>Interviewing engineers and founders, and testing their process myself as a beginner.</p></div>
+    </div>
+    <div class="rows"><button class="row rv" data-open="assess-0"><span class="n mono">Assessment 05</span><span class="ttl">Interview with Jason Lee</span><span class="dt mono">Oct 23, 2026</span><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 7h12M8 2l5 5-5 5"/></svg></button><button class="row rv" data-open="assess-1"><span class="n mono">Assessment 04</span><span class="ttl">Annotated Bibliography, Computer Vision Framework Learning</span><span class="dt mono">Sep 2026</span><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 7h12M8 2l5 5-5 5"/></svg></button><button class="row rv" data-open="assess-2"><span class="n mono">Assessment 03</span><span class="ttl">Making Computer Vision More Cost-Efficient in Robotics</span><span class="dt mono">Sep 2026</span><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 7h12M8 2l5 5-5 5"/></svg></button><button class="row rv" data-open="assess-3"><span class="n mono">Assessment 01</span><span class="ttl">Robotics Industry Trends &amp; Future Outlook</span><span class="dt mono">Aug 2026</span><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 7h12M8 2l5 5-5 5"/></svg></button></div>
+  </div>
+</section>
+
+
+<!-- MENTOR -->
+<section id="mentor">
+  <div class="wrap">
+    <div class="sec-head"><h2 class="rv">Mentor</h2><span class="mono rv d1">Interviews &amp; guidance</span></div>
+    <div class="rule rv"></div>
+    <div class="mentor">
+      <div><p class="lead rv" style="margin:0;font-size:clamp(24px,2.8vw,34px)">Learning from people who have actually done it.</p></div>
+      <div>
+        <span class="mono rv" style="color:var(--signal)">Interview · Oct 2026</span>
+        <h3 class="rv d1">Jason Lee</h3>
+        <p class="role rv d1">Founder &amp; CEO, GoGreat USA Inc. · Frisco, Texas</p>
+        <p class="rv d2">I met Jason at the ISM professional symposium. He spent about 29 years in IT and 16 as an entrepreneur, building enterprise software, AI and security systems, before moving into robotics education with GoGreat Virtual Robotics.</p>
+        <blockquote class="rv d3">“Explore it deeply, experiment, fail, rethink, and try again.”</blockquote>
+        <p class="rv d3">Instead of telling me which skills to learn, he asked why I wanted to build a robot at all. That question changed my research.</p>
+        <div class="mini">
+          <div class="rv d4"><span class="mono" style="color:var(--dim)">Upcoming</span><h4>Brainstorming meetup</h4><p>Jason is organizing a student meetup at the Frisco Public Library. I'll bring my ideas to share.</p></div>
+          <div class="rv d5"><span class="mono" style="color:var(--dim)">August</span><h4>Mechatronics professional</h4><p>His advice: build strong fundamentals in physics and calculus early.</p></div>
+        </div>
+        <button class="btn rv d5" style="margin-top:40px" data-open="assess-0">Read the full interview <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 7h12M8 2l5 5-5 5"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <span class="mono rv" style="color:var(--signal)">Contact</span>
+    <h2 class="rv d1" style="margin-top:22px">Let's build<br>something.</h2>
+    <a class="mail rv d2" href="mailto:dhruvatejmandadi@gmail.com">dhruvatejmandadi@gmail.com</a>
+    <div class="foot mono"><span>© 2026 Dhruvatej Mandadi · Frisco High School ISM</span><span>Engineering portfolio · <a href="https://dhruvatej.netlify.app">dhruvatej.netlify.app</a></span></div>
+  </div>
+</footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="sheet"><div class="sheet-in">
+    <div class="top mono"><span id="mMeta"></span><button class="x mono" id="mClose">Close ✕</button></div>
+    <h2 id="mTitle"></h2>
+    <div id="mBody"></div>
+  </div></div>
+</div>
+
+<template id="t-blog-0" data-title="Finding My Direction" data-meta="Blog · Sep 28 – Oct 19"><p>These past few weeks were less about building and more about figuring out what I actually want to build. In my last blog I said I felt lost and like I was juggling too many things. This stretch helped me find a direction.</p>
+        <p>After the ISM professional meeting, I reached out to Jason Lee, a robotics professional who runs a robotics education company in Frisco. I asked him where to start learning robotics, and instead of giving me a list of skills, he asked me a question: "Why do you want to build a robot?" That made me stop and think. I realized I'm interested in robotics because I like building things and I'm curious how software and physical machines work together.</p>
+        <p>At first I had an idea for a rover that brings someone a water bottle. I went through a lot of versions of it, including a stair-climbing robot and a lift system, but Jason pushed me to imagine beyond it and find a problem that truly excites me. Since I love football, I landed on a robot that retrieves footballs during kicking practice and tracks how far each kick goes.</p>
+        <p>The biggest change was my research question. It is now: "How do engineers turn an idea into an innovation, and what does that process look like for a beginner?" I realized the problem was never a lack of ideas, it was direction. My own journey these weeks is actually part of the answer.</p>
+        <p>I still have a lot to learn, but for the first time, I feel like I know where I'm going.</p></template>
+<template id="t-blog-1" data-title="Lost But Surviving" data-meta="Blog · Sep 14 – Sep 28"><p>I am starting to really research and want to learn the frameworks behind computer vision. Robotics club starts next week, and I feel unprepared for what's coming, including DECA and everything else I have committed to. I finished some of a Python course and started brainstorming different use cases for how I can apply computer vision, but it still feels like there are a lot of things juggling in my mind at once. Between homework, robotics, DECA, and symposium coming up, I sometimes feel like I am falling behind even when I am making progress.</p>
+        <p>Part of why I feel unprepared is because I know there is still so much I want to learn. I want to understand CV beyond the surface level and be confident enough to actually build and present something meaningful. At the same time, I am trying to balance school and extracurriculars while making sure I do well in everything I take on.</p>
+        <p>I know I will be prepared eventually, and I know I will find ways to create good experiences this year. By mid October, I hope to feel more confident, organized, and ready to start a project.</p></template>
+<template id="t-blog-2" data-title="Ready For the Bigger" data-meta="Blog · Aug 24 – Sep 7"><p>This week was less about planning and more about putting myself in the positions to finally get some experience. I filled out forms for the robotics club at the CTE center, which was my first step to get my hands dirty instead of only being in the class. I joined DECA to improve my business skills because my business skills matter just as much as my technical skills. If I want to build something and turn that into a business someday, I need to have these uncomfortable experiences to build my confidence.</p>
+        <p>I finished my first research assessment, which allowed me to understand the robotics industry better. I used to think robotics was just a few engineering disciplines stacked together, but it is also about the future, cost, and AI. That's why I would like to research cheaper ways, or just the future, of computer vision. I still don't have the most clarity, but I am ready to work for it.</p></template>
+<template id="t-blog-3" data-title="Building From the Ground Up" data-meta="Blog · Aug 17 – Aug 23"><p>This week I learned more coding concepts, got back into the school routine, and reached out to a young professional to talk about his experiences in robotics and mechatronics. From our conversation, I learned there is a lot more to robotics than I expected. He told me I need to build up my fundamentals like physics and calculus, because growing up, that was his biggest regret.</p>
+        <p>To start getting my hands dirty, I want to start with the robotics club at the CTE center so I can learn by doing instead of only taking the engineering class. My plan is to build up my fundamentals so I have somewhere to start from, and keep trying to find a dedicated mentor. I still have a lot to figure out, but I will keep a good work ethic and stay patient throughout the process.</p></template>
+<template id="t-assess-0" data-title="Interview with Jason Lee" data-meta="Assessment #5 · Oct 23, 2026"><p>These past 2 weeks, I emailed Jason Lee, the Founder and CEO of GoGreat USA Inc. in Frisco, Texas. His company runs GoGreat Virtual Robotics, a browser-based platform where students design and test robots before using real hardware. Before robotics education, he spent about 29 years in IT and 16 as an entrepreneur, building enterprise software, AI, and security systems. I met him at the ISM professional symposium meeting, and we continued the conversation over email.</p>
+<h4>Q&amp;A</h4>
+<p><strong>1. Where should I start if I want to learn how to build a robot?</strong></p>
+<p>Instead of giving me a list of skills, Jason answered with a question back: <strong>"Why do you want to build a robot?"</strong> He explained that robotics involves mechanics, electronics, and programming, but "the most important part is learning to ask questions, experiment, and discover things for yourself" (J. Lee, personal communication, October 13, 2026). He told me to start with something small that interests me.</p>
+<p><strong>2. How did you start learning robotics and what should my project be?</strong></p>
+<p>I shared my first idea, a rover that brings someone a water bottle. He said it was a good start but encouraged me to "imagine beyond it" and think about a problem no one has thought about yet. I was a little overwhelmed by some of my ideas in the past because I tried them and never got good solutions. I felt like I needed to build more of my technical skills this year. His biggest advice was to choose one problem that truly excites me and stay with it, even if it takes months or years: "Explore it deeply, experiment, fail, rethink, and try again" (J. Lee, personal communication, October 13, 2026).</p>
+<p><strong>3. Is a football retrieval robot a good project for my research, and what should I watch out for first?</strong></p>
+<p>After thinking about problems I care about, I pitched a robot that finds kicked footballs, brings them back, and tracks each kick. Jason said it was "a great research idea" and that starting with computer vision makes sense. The one problem for me now is direction. He suggested "try using a simple camera to detect a football on grass under different lighting conditions" and expect to run into interesting challenges (J. Lee, personal communication, October 17, 2026).</p>
+<p><strong>Follow up</strong></p>
+<p>A few days later, Jason reached out with a new idea. He's considering organizing "a small brainstorming meetup at the Frisco Public Library for students interested in robotics, AI, and engineering," so students working on different ideas can share challenges and learn from one another (J. Lee, personal communication, October 22, 2026). He said my project would be a good topic for discussion and that he would like to learn alongside everyone. I told him I would definitely be interested and asked when he's thinking of scheduling it.</p>
+<h4>What I Learned and How It Changed My Thinking</h4>
+<p>The biggest thing I learned is that engineering doesn't start with skills. It starts with a reason. When I first emailed Jason, I expected him to tell me which kit to buy or what to try learning. Instead he made me explain why I wanted to build in the first place. At first that felt like he was avoiding my question, but I now think it was really useful. Without a clear reason, I kept jumping between ideas and I still am.</p>
+<p>This interview also showed me that my problem was never a lack of ideas. It was direction. I went from a stair-climbing water robot to a rover with a lift station to a football retrieval robot or maybe a popcorn distributor at the theaters to share a large tub. I don't know yet. The ideas are not the problem but it's still pushing me to think about innovation. Looking back, that process of trying ideas, rejecting what didn't fit, and noticing what excited me is exactly what he was describing.</p>
+<p>I agree that excitement matters, because I can already tell I will work harder on a robot and actually try having a process instead of rushing like my SaaS I tried to build. The part I am still trying to figure out is balancing his idea of solving a problem no one has thought of with having deadlines as an inexperienced self like me. Almost every idea I found existed in some form too, like tennis and golf ball collecting robots. What I learned is that originality can also come from a new angle, like applying an idea to a new sport or testing it in a new way.</p>
+<p>Finally, his background changed how I see my own path. Jason did not start in robotics. He spent decades in software and AI, and then moved into robotics education. That made me feel less behind as a beginner, because it shows that skills from other areas, like my experience trying to build a software product, can carry over.</p>
+<h4>Why It Matters and My Next Steps</h4>
+<p>This interview directly shaped my research question. I started with "How can we make CV tasks cheaper without risking performance and safety?" After talking with Jason, I realized the part I care about most is the process itself. My new research question is something closely related to: How do engineers turn an idea into an innovation, and what does that process look like for a beginner? Jason's own path, from software to robotics education, is one example of that process, and his advice gives me my first set of steps. Start with why, pick a problem you care about, start small, experiment, fail, and try again.</p>
+<p>I also learned that I don't want to lock myself entirely to one idea this early. Jason told me to stay with a problem for a long time, and I agree with that, but I think a beginner first needs to explore a few ideas before choosing the one worth that commitment. So far I have explored a water delivery rover, a rover with a lift station, a football retrieval robot, a solar charging system for phones, and a popcorn distributor. I need to try some of these ideas, but I don't want to do it only for research project purposes but for my own learning so I am technically knowledgeable. Jason's brainstorming meetup fits this well, because it will expose me to other students' ideas and challenges too.</p>
+<p><strong>My next steps are:</strong></p>
+<ol>
+<li>Keep an idea list and add to it every week, noting what problem each idea solves and who it helps.</li>
+<li>Pick two or three ideas and test a small version of each. For the football robot, that means Jason's suggestion: testing whether a simple camera can detect a football on grass in sun, shade, cloudy, and evening light.</li>
+<li>Join Jason's brainstorming meetup at the Frisco Public Library, share my ideas, and learn from other students' projects.</li>
+<li>Interview more engineers and entrepreneurs with the same core questions, so I can compare how they choose which idea to pursue and how they turn it into an innovation.</li>
+<li>Email Jason my early results, since he said he is looking forward to seeing what I discover.</li>
+</ol>
+<h4>References</h4>
+<p class="ref">GoGreat USA. (2026). <em>About GoGreat USA</em>. https://www.gogreat.us/about</p>
+</template>
+<template id="t-assess-1" data-title="Annotated Bibliography, Computer Vision Framework Learning" data-meta="Assessment #4 · Sep 2026"><p>I studied five sources on how vision systems can be efficient and trustworthy: event cameras (Gallego et al.), calibration of neural networks (Guo et al.), uncertainty under changing conditions (Ovadia et al.), early-exit networks (BranchyNet), and human-like adaptive vision (AdaptiveNN).</p>
+        <p>The key lesson: a robot that switches between cheap and powerful vision only works if its confidence is honest, and making reliable confidence cheap is still an open problem.</p></template>
+<template id="t-assess-2" data-title="Making Computer Vision More Cost-Efficient in Robotics" data-meta="Assessment #3 · Sep 2026"><p>Advanced computer vision needs expensive computing, lots of data, and significant energy. Research suggests the solution isn't simply cheaper hardware, but designing the vision system around the robot's specific task. Promising approaches include adaptive processing (AdaptiveNN reported up to a 28-fold reduction in inference cost), multiple specialized models, event-based cameras, and resource-aware systems.</p>
+        <p>No single framework yet combines all of these into one architecture that can handle many tasks, and that gap is what got me interested in this question.</p></template>
+<template id="t-assess-3" data-title="Robotics Industry Trends &amp; Future Outlook" data-meta="Assessment #1 · Aug 2026"><p>The robotics industry is growing fast, with industrial robot installations valued at $16.7 billion (IFR, 2026). AI is letting robots move from repetitive tasks toward systems that can adapt and make decisions. But autonomous robots often cost $30,000–$150,000, and adoption will stay limited until humanoid robots cost less than $20,000 (McKinsey &amp; Company, 2026).</p>
+        <p>This changed how I see robotics: not just a few engineering disciplines stacked together, but a field where cost, safety, and functionality limit how fast it can evolve.</p></template>
+
+<script>
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+addEventListener('load',()=>document.body.classList.add('loaded'));
+setTimeout(()=>document.body.classList.add('loaded'),1200);
+
+/* nav */
+const nav=$('#nav'), links=$('#links'), burger=$('#burger');
+const onScroll=()=>nav.classList.toggle('solid',scrollY>40);
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+burger.onclick=()=>{const o=links.classList.toggle('open');burger.setAttribute('aria-expanded',o);};
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');burger.setAttribute('aria-expanded',false);}));
+const navMap={home:'home',blog:'blog',about:'about',ism:'ism',research:'research',mentor:'mentor',contact:'mentor'};
+const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const id=navMap[e.target.id];links.querySelectorAll('a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+id));}}),{rootMargin:'-45% 0px -50% 0px'});
+$$('main section, footer').forEach(s=>s.id&&spy.observe(s));
+
+/* reveal */
+const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target);}}),{threshold:.15,rootMargin:'0px 0px -6% 0px'});
+$$('.rv,.wipe,.flow').forEach(el=>ro.observe(el));
+requestAnimationFrame(()=>$$('.hero .rv').forEach(el=>el.classList.add('in')));
+
+/* process flow diagram */
+(function(){
+  const steps=['Start with why','Pick a problem','Start small','Experiment','Fail','Rethink'];
+  const g=$('#flowg'), W=1160, bw=160, gap=(W-bw*6)/5, y=60, h=78;
+  let s='';
+  steps.forEach((t,i)=>{const x=i*(bw+gap);
+    s+=`<rect class="box" x="${x}" y="${y}" width="${bw}" height="${h}"/><text class="num" x="${x+14}" y="${y+24}">0${i+1}</text><text class="lbl" x="${x+14}" y="${y+56}">${t}</text>`;
+    if(i<5){const x1=x+bw,x2=x+bw+gap;s+=`<path class="wire draw" d="M${x1} ${y+h/2}H${x2-6}"/><path class="wire draw" d="M${x2-11} ${y+h/2-5}l5 5-5 5"/>`;}
+  });
+  const xa=3*(bw+gap)+bw/2, xb=5*(bw+gap)+bw/2;
+  s+=`<path class="loop draw" d="M${xb} ${y+h} V${y+h+52} H${xa} V${y+h+8}"/><path class="wire draw" d="M${xa-5} ${y+h+14}l5-6 5 6"/><text class="num" x="${(xa+xb)/2-38}" y="${y+h+44}">TRY AGAIN</text>`;
+  g.innerHTML=s;
+  g.querySelectorAll('.draw').forEach(p=>{const l=Math.ceil(p.getTotalLength());p.style.setProperty('--len',l);});
+})();
+
+
+/* modal */
+const modal=$('#modal'); let lastFocus=null;
+function openM(id){
+  const t=document.getElementById('t-'+id); if(!t)return; lastFocus=document.activeElement;
+  $('#mMeta').textContent=t.dataset.meta; $('#mTitle').innerHTML=t.dataset.title;
+  $('#mBody').innerHTML=''; $('#mBody').appendChild(t.content.cloneNode(true));
+  modal.classList.add('open'); modal.querySelector('.sheet').scrollTop=0; document.body.style.overflow='hidden';
+  $('#mClose').focus({preventScroll:true});
+}
+function closeM(){modal.classList.remove('open');document.body.style.overflow='';lastFocus&&lastFocus.focus({preventScroll:true});}
+$$('[data-open]').forEach(b=>b.addEventListener('click',()=>openM(b.dataset.open)));
+$('#mClose').onclick=closeM;
+modal.addEventListener('click',e=>{if(e.target===modal)closeM();});
+addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open'))closeM();});
+</script>
+</body>
+</html>
